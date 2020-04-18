@@ -13,6 +13,7 @@ public class CountriesResponse {
     private String deaths;
     private String todayCases;
     private String todayDeaths;
+    private String tests;
 
 
     public String getCountry() {
@@ -101,5 +102,13 @@ public class CountriesResponse {
 
     public void setTodayDeaths(String todayDeaths) {
         this.todayDeaths = todayDeaths;
+    }
+
+    public String getTests() {
+        return tests;
+    }
+
+    public void setTests(String tests) {
+        this.tests = tests;
     }
 }

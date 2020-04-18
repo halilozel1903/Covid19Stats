@@ -25,16 +25,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity  {
-
+public class MainActivity extends AppCompatActivity {
 
 
     private SearchView searchView;
     private RecyclerView recyclerView;
     private CountryAdapter countryAdapter;
     private List<CountriesResponse> countriesResponseList;
-
-
 
 
     @Override
@@ -54,21 +51,18 @@ public class MainActivity extends AppCompatActivity  {
                 ApiClient.getRetrofitInstance().create(ApiInterface.class);
 
 
-
-
         Call<List<CountriesResponse>> call = apiInterface.getCountries();
-        call.enqueue(new  Callback<List<CountriesResponse>>() {
+        call.enqueue(new Callback<List<CountriesResponse>>() {
             @Override
             public void onResponse(Call<List<CountriesResponse>> call, Response<List<CountriesResponse>> response) {
 
                 countriesResponseList = response.body();
 
-                //System.out.println("response size : "+responseList.size());
 
                 if (countriesResponseList != null) {
-                    for (CountriesResponse countriesResponse : countriesResponseList){
+                    for (CountriesResponse countriesResponse : countriesResponseList) {
 
-                        System.out.println("Country Name : "+countriesResponse.getCountry()+ " - Death Count : "+ countriesResponse.getDeaths()+"\n");
+                        System.out.println("Country Name : " + countriesResponse.getCountry() + " - Death Count : " + countriesResponse.getDeaths() + "\n");
 
                         countryAdapter.setCountryList(getApplicationContext(), countriesResponseList);
 
@@ -132,7 +126,6 @@ public class MainActivity extends AppCompatActivity  {
         }
         super.onBackPressed();
     }
-
 
 
 }

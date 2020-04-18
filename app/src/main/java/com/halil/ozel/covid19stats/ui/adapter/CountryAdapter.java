@@ -1,6 +1,7 @@
 package com.halil.ozel.covid19stats.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.halil.ozel.covid19stats.R;
 import com.halil.ozel.covid19stats.api.ApiClient;
 import com.halil.ozel.covid19stats.api.ApiInterface;
 import com.halil.ozel.covid19stats.data.CountriesResponse;
+import com.halil.ozel.covid19stats.ui.activity.DetailActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -33,13 +35,10 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
     private List<CountriesResponse> countriesListed;
     private Context context;
 
-   // private List<CountriesResponse> movieList;
 
-
-
-    public void setCountryList(Context context, final List<CountriesResponse> countriesList){
+    public void setCountryList(Context context, final List<CountriesResponse> countriesList) {
         this.context = context;
-        if(this.countriesList == null){
+        if (this.countriesList == null) {
             this.countriesList = countriesList;
             this.countriesListed = countriesList;
             notifyItemChanged(0, countriesListed.size());
@@ -67,7 +66,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
                     CountriesResponse oldMovie = countriesList.get(newItemPosition);
 
-                    return newMovie.getCountry() == oldMovie.getCountry() ;
+                    return newMovie.getCountry() == oldMovie.getCountry();
                 }
             });
             this.countriesList = countriesList;
@@ -75,7 +74,6 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
             result.dispatchUpdatesTo(this);
         }
     }
-
 
 
     @Override
@@ -102,9 +100,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
                         ApiClient.getRetrofitInstance().create(ApiInterface.class);
 
 
-
-                Call<CountriesResponse>call = apiInterface.getCountryInfo(countriesListed.get(position).getCountry());
-                call.enqueue(new  Callback<CountriesResponse>() {
+                Call<CountriesResponse> call = apiInterface.getCountryInfo(countriesListed.get(position).getCountry());
+                call.enqueue(new Callback<CountriesResponse>() {
                     @Override
                     public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {
 
@@ -112,31 +109,30 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
                         //System.out.println("response size : "+responseList.size());
 
 
+                        Intent intent = new Intent(view.getContext(), DetailActivity.class);
+
                         if (response.body() != null) {
-                            System.out.println("Country Name  : " + response.body().getCountry());
-                            System.out.println("Country Death : " + response.body().getDeaths());
-                            System.out.println("Country Cases : " + response.body().getCases());
-                            System.out.println("Country Recovered : " + response.body().getRecovered());
+                            intent.putExtra("country", response.body().getCountry());
+                            intent.putExtra("todayCase", response.body().getTodayCases());
+                            intent.putExtra("todayDeath", response.body().getTodayDeaths());
+                            intent.putExtra("flag", response.body().getCountryInfo().getFlag());
+                            intent.putExtra("cases", response.body().getCases());
+                            intent.putExtra("deaths", response.body().getDeaths());
+                            intent.putExtra("tests", response.body().getTests());
+                            intent.putExtra("recovered", response.body().getRecovered());
                         }
 
 
-                        // System.out.println(response.body());
-
-                        //System.out.println("response size : "+responseList.size());
-
-
-
+                        view.getContext().startActivity(intent);
 
 
                     }
 
                     @Override
-                    public void onFailure(Call<CountriesResponse>call, Throwable t) {
+                    public void onFailure(Call<CountriesResponse> call, Throwable t) {
                         Log.d("Error", t.getMessage());
                     }
                 });
-
-
 
 
             }
@@ -147,7 +143,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
     @Override
     public int getItemCount() {
 
-        if(countriesList != null){
+        if (countriesList != null) {
             return countriesListed.size();
         } else {
             return 0;
@@ -187,14 +183,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
     }
 
 
-
-    public  class CountryHolder extends RecyclerView.ViewHolder {
+    public class CountryHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         TextView countryTitle;
         TextView countryName;
         ImageView image;
-
-
 
 
         public CountryHolder(View v) {
@@ -205,11 +198,6 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
             image = v.findViewById(R.id.ivCountryPoster);
         }
     }
-
-
-
-
-
 
 
 }

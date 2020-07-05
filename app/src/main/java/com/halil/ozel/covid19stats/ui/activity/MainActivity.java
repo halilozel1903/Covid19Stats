@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.halil.ozel.covid19stats.R;
-import com.halil.ozel.covid19stats.api.ApiClient;
-import com.halil.ozel.covid19stats.api.ApiInterface;
+import com.halil.ozel.covid19stats.api.CoronaApi;
+import com.halil.ozel.covid19stats.api.CoronaService;
 import com.halil.ozel.covid19stats.data.CountriesResponse;
 import com.halil.ozel.covid19stats.ui.adapter.CountryAdapter;
 
@@ -47,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
         countriesResponseList = new ArrayList<>();
 
-        ApiInterface apiInterface =
-                ApiClient.getRetrofitInstance().create(ApiInterface.class);
+        CoronaService coronaService =
+                CoronaApi.getRetrofitInstance().create(CoronaService.class);
 
 
-        Call<List<CountriesResponse>> call = apiInterface.getCountries();
+        Call<List<CountriesResponse>> call = coronaService.getCountries();
         call.enqueue(new Callback<List<CountriesResponse>>() {
             @Override
             public void onResponse(Call<List<CountriesResponse>> call, Response<List<CountriesResponse>> response) {

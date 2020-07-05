@@ -16,8 +16,8 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.halil.ozel.covid19stats.R;
-import com.halil.ozel.covid19stats.api.ApiClient;
-import com.halil.ozel.covid19stats.api.ApiInterface;
+import com.halil.ozel.covid19stats.api.CoronaApi;
+import com.halil.ozel.covid19stats.api.CoronaService;
 import com.halil.ozel.covid19stats.data.CountriesResponse;
 import com.halil.ozel.covid19stats.ui.activity.DetailActivity;
 import com.squareup.picasso.Picasso;
@@ -96,11 +96,11 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
             public void onClick(View view) {
 
 
-                ApiInterface apiInterface =
-                        ApiClient.getRetrofitInstance().create(ApiInterface.class);
+                CoronaService coronaService =
+                        CoronaApi.getRetrofitInstance().create(CoronaService.class);
 
 
-                Call<CountriesResponse> call = apiInterface.getCountryInfo(countriesListed.get(position).getCountry());
+                Call<CountriesResponse> call = coronaService.getCountryInfo(countriesListed.get(position).getCountry());
                 call.enqueue(new Callback<CountriesResponse>() {
                     @Override
                     public void onResponse(Call<CountriesResponse> call, Response<CountriesResponse> response) {

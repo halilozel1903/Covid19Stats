@@ -3,7 +3,7 @@ package com.halil.ozel.covid19stats.api;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class CoronaApi {
 
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://corona.lmao.ninja/v2/";

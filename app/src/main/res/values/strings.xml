@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Covid19 Stats</string>
+    <string name="deaths_string">\"Deaths : \"</string>
 </resources>

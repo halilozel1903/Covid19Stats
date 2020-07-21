@@ -9,9 +9,9 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -86,7 +86,8 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
     @Override
     public void onBindViewHolder(CountryHolder holder, final int position) {
-        holder.countryTitle.setText("Total Death : " + countriesListed.get(position).getDeaths());
+        String number_of_deaths = context.getString(R.string.deaths_string) + countriesListed.get(position).getDeaths();
+        holder.countryTitle.setText(number_of_deaths);
         holder.countryName.setText(countriesListed.get(position).getCountry());
         Picasso.with(context).load(countriesListed.get(position).getCountryInfo().getFlag()).into(holder.image);
 
@@ -184,7 +185,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
 
     public class CountryHolder extends RecyclerView.ViewHolder {
-        CardView cardView;
+        LinearLayout linearLayout;
         TextView countryTitle;
         TextView countryName;
         ImageView image;
@@ -192,7 +193,7 @@ public class CountryAdapter extends RecyclerView.Adapter<CountryAdapter.CountryH
 
         public CountryHolder(View v) {
             super(v);
-            cardView = v.findViewById(R.id.cvCountry);
+            linearLayout = v.findViewById(R.id.cvCountry);
             countryTitle = v.findViewById(R.id.tvCountryDeath);
             countryName = v.findViewById(R.id.tvCountryName);
             image = v.findViewById(R.id.ivCountryPoster);

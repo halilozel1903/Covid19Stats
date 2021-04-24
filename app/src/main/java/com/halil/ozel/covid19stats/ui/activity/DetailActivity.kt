@@ -1,58 +1,47 @@
-package com.halil.ozel.covid19stats.ui.activity;
+package com.halil.ozel.covid19stats.ui.activity
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import com.halil.ozel.covid19stats.R
+import com.squareup.picasso.Picasso
 
-import android.os.Bundle;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.halil.ozel.covid19stats.R;
-import com.squareup.picasso.Picasso;
-
-public class DetailActivity extends AppCompatActivity {
-
-
-    ImageView ivCountryPoster;
-    TextView tvCountryName, tvTodayCases, tvTodayDeath, tvTotalTests, tvTotalCases, tvTotalDeaths, tvTotalRecovered;
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
-        tvCountryName = findViewById(R.id.tvCountryName);
-        tvTodayCases = findViewById(R.id.tvTodayCases);
-        tvTodayDeath = findViewById(R.id.tvTodayDeath);
-        tvTotalTests = findViewById(R.id.tvTotalTests);
-        tvTotalCases = findViewById(R.id.tvTotalCases);
-        tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
-        tvTotalRecovered = findViewById(R.id.tvTotalRecovered);
-
-        ivCountryPoster = findViewById(R.id.ivCountryPoster);
-
-
-        String countryName = getIntent().getStringExtra("country");
-        String todayCase = getIntent().getStringExtra("todayCase");
-        String todayDeath = getIntent().getStringExtra("todayDeath");
-        String totalCases = getIntent().getStringExtra("cases");
-        String totalDeaths = getIntent().getStringExtra("deaths");
-        String totalTests = getIntent().getStringExtra("tests");
-        String totalRecovered = getIntent().getStringExtra("recovered");
-
-        tvCountryName.setText(countryName);
-        tvTodayCases.setText(todayCase);
-        tvTodayDeath.setText(todayDeath);
-
-        tvTotalTests.setText(totalTests);
-        tvTotalCases.setText(totalCases);
-        tvTotalDeaths.setText(totalDeaths);
-        tvTotalRecovered.setText(totalRecovered);
-
-
-        Picasso.with(getApplicationContext()).
-                load(getIntent().getStringExtra("flag"))
-                .into(ivCountryPoster);
-
-
+class DetailActivity : AppCompatActivity() {
+    var ivCountryPoster: ImageView? = null
+    var tvCountryName: TextView? = null
+    var tvTodayCases: TextView? = null
+    var tvTodayDeath: TextView? = null
+    var tvTotalTests: TextView? = null
+    var tvTotalCases: TextView? = null
+    var tvTotalDeaths: TextView? = null
+    var tvTotalRecovered: TextView? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_detail)
+        tvCountryName = findViewById(R.id.tvCountryName)
+        tvTodayCases = findViewById(R.id.tvTodayCases)
+        tvTodayDeath = findViewById(R.id.tvTodayDeath)
+        tvTotalTests = findViewById(R.id.tvTotalTests)
+        tvTotalCases = findViewById(R.id.tvTotalCases)
+        tvTotalDeaths = findViewById(R.id.tvTotalDeaths)
+        tvTotalRecovered = findViewById(R.id.tvTotalRecovered)
+        ivCountryPoster = findViewById(R.id.ivCountryPoster)
+        val countryName = intent.getStringExtra("country")
+        val todayCase = intent.getStringExtra("todayCase")
+        val todayDeath = intent.getStringExtra("todayDeath")
+        val totalCases = intent.getStringExtra("cases")
+        val totalDeaths = intent.getStringExtra("deaths")
+        val totalTests = intent.getStringExtra("tests")
+        val totalRecovered = intent.getStringExtra("recovered")
+        tvCountryName!!.text = countryName
+        tvTodayCases!!.text = todayCase
+        tvTodayDeath!!.text = todayDeath
+        tvTotalTests!!.text = totalTests
+        tvTotalCases!!.text = totalCases
+        tvTotalDeaths!!.text = totalDeaths
+        tvTotalRecovered!!.text = totalRecovered
+        Picasso.with(applicationContext).load(intent.getStringExtra("flag"))
+                .into(ivCountryPoster)
     }
 }

@@ -1,26 +1,20 @@
-package com.halil.ozel.covid19stats.api;
+package com.halil.ozel.covid19stats.api
 
-import com.halil.ozel.covid19stats.data.AllCountriesResponse;
-import com.halil.ozel.covid19stats.data.CountriesResponse;
+import com.halil.ozel.covid19stats.data.AllCountriesResponse
+import com.halil.ozel.covid19stats.data.CountriesResponse
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Path
 
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.http.GET;
-import retrofit2.http.Path;
-
-public interface CoronaService {
-
-    @GET("countries/?sort=country")
-    Call<List<CountriesResponse>> getCountries();
-
+interface CoronaService {
+    @get:GET("countries/?sort=country")
+    val countries: Call<List<CountriesResponse>>
 
     @GET("countries/{country}")
-    Call<CountriesResponse> getCountryInfo(
+    fun getCountryInfo(
+            @Path("country") country: String?
+    ): Call<CountriesResponse?>?
 
-            @Path("country") String country
-    );
-
-    @GET("all")
-    Call<AllCountriesResponse> getAllCountries();
+    @get:GET("all")
+    val allCountries: Call<AllCountriesResponse?>?
 }

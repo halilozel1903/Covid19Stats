@@ -6,12 +6,12 @@ Coronavirus disease (COVID-19) is an infectious disease caused by a newly discov
 Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment
 
 It is an Android application that contains information about the Covid19 Virus. It contains detailed information about all countries.
-Daily case numbers, death numbers can be learned. I code the project in Kotlin programming language. Retrofit, Picasso technologies are used.<br>
+Daily case numbers, death numbers can be learned. I code the project in Kotlin programming language. Retrofit, Picasso technologies are used.<br><br>
 
-## Which API are you using ? 🤔
+## Which API are you using 🤔
 
 I'm using this API in Android Application : https://corona.lmao.ninja<br><br>
-This Api is perfect. Build anything from console widgets to mobile applications with our free and easy to use API.<br>
+This Api is perfect. Build anything from console widgets to mobile applications with our free and easy to use API.<br><br>
 
 
 ## Android Application Screens 📱
@@ -21,17 +21,19 @@ When the application is opened, a screen listing all countries is shown. This sc
 
 <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/homeScreen.jpeg" width="300" /> <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/homeScreenPage.jpeg" width="300" />
 
-<br>
+<br><br>
 
 You can find information about the desired country by clicking the search button at the top of the main page.
 
 <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/searchFirst.jpeg" width="250" /> <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/searchNext.jpeg" width="250" />  <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/searchResult.jpeg" width="250" />
 
-<br>
+<br><br>
 
-Clicking on the countries from the main page or search screen goes to the detail page. There is a variety of information on the detail page. These are as follows : Today cases, Today death, Total test, Total case, Total deaths, Total recovered.
+Clicking on the countries from the main page or search screen goes to the detail page. There is a variety of information on the detail page. These are as follows: **Today cases, Today death, Total test, Total case, Total deaths, Total recovered.**
 
 <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailTurkey.jpeg" width="250" /> <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailSpain.jpeg" width="250" />  <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailUsa.jpeg" width="250" />
+
+<br>
 
 ## Coming Soon 🔜
 Stay At Home 🏠
@@ -46,7 +48,7 @@ Everything will be good ✅
 ```
 MIT License
 
-Copyright (c) 2020 Halil Özel
+Copyright (c) 2021 Halil OZEL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

@@ -1,6 +1,6 @@
 # Covid19 🦠 Stats 📋
 
-![Screenshot](https://github.com/halilozel1903/Covid19Stats/blob/master/corona.jpg)
+![Screenshot](https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/corona.jpg)
 
 Coronavirus disease (COVID-19) is an infectious disease caused by a newly discovered coronavirus.
 Most people who fall sick with COVID-19 will experience mild to moderate symptoms and recover without special treatment
@@ -13,6 +13,7 @@ Daily case numbers, death numbers can be learned. I code the project in Kotlin p
 I'm using this API in Android Application : https://corona.lmao.ninja<br><br>
 This Api is perfect. Build anything from console widgets to mobile applications with our free and easy to use API.<br><br>
 
+![Screenshot](https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/summary.png)
 
 ## Android Application Screens 📱
 

@@ -8,11 +8,11 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.halil.ozel.covid19stats.R
 import com.halil.ozel.covid19stats.api.CoronaApi.retrofitInstance
 import com.halil.ozel.covid19stats.api.CoronaService
 import com.halil.ozel.covid19stats.data.CountriesResponse
+import com.halil.ozel.covid19stats.databinding.ActivityMainBinding
 import com.halil.ozel.covid19stats.ui.adapter.CountryAdapter
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,23 +22,27 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private var searchView: SearchView? = null
-    private var recyclerView: RecyclerView? = null
     private var countryAdapter: CountryAdapter? = null
     private var countriesResponseList: List<CountriesResponse>? = null
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        recyclerView = findViewById(R.id.rvCountry)
-        recyclerView!!.layoutManager = LinearLayoutManager(this)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        binding.rvCountry.layoutManager = LinearLayoutManager(this)
         countryAdapter = CountryAdapter()
-        recyclerView!!.adapter = countryAdapter
+        binding.rvCountry.adapter = countryAdapter
         countriesResponseList = ArrayList()
         val coronaService = retrofitInstance!!.create(CoronaService::class.java)
-        val call = coronaService.countries
+        val call = coronaService.getCountryList()
 
         call.enqueue(object : Callback<List<CountriesResponse>> {
-            override fun onResponse(call: Call<List<CountriesResponse>>, response: Response<List<CountriesResponse>>) {
+            override fun onResponse(
+                call: Call<List<CountriesResponse>>,
+                response: Response<List<CountriesResponse>>
+            ) {
                 countriesResponseList = response.body()
                 if (countriesResponseList != null) {
                     for (countriesResponse in countriesResponseList!!) {
@@ -58,9 +62,11 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.main_menu, menu)
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
         searchView = menu.findItem(R.id.action_search)
-                .actionView as SearchView
-        searchView!!.setSearchableInfo(searchManager
-                .getSearchableInfo(componentName))
+            .actionView as SearchView
+        searchView!!.setSearchableInfo(
+            searchManager
+                .getSearchableInfo(componentName)
+        )
         searchView!!.maxWidth = Int.MAX_VALUE
         searchView!!.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {

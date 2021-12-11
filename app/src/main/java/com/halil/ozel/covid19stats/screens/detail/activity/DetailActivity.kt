@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.ui.activity
+package com.halil.ozel.covid19stats.screens.detail.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

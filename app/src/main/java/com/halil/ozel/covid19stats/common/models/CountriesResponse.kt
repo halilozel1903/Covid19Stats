@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.data
+package com.halil.ozel.covid19stats.common.models
 
 class CountriesResponse {
     var country: String? = null

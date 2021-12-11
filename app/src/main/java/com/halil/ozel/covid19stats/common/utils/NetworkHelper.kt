@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.utils
+package com.halil.ozel.covid19stats.common.utils
 
 import android.annotation.SuppressLint
 import android.content.Context

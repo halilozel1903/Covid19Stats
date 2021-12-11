@@ -1,12 +1,13 @@
-package com.halil.ozel.covid19stats.viewmodel
+package com.halil.ozel.covid19stats.screens.home.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.halil.ozel.covid19stats.data.CountriesResponse
-import com.halil.ozel.covid19stats.repository.Repository
-import com.halil.ozel.covid19stats.utils.NetworkHelper
-import com.halil.ozel.covid19stats.utils.Source
+import com.halil.ozel.covid19stats.common.models.CountriesResponse
+import com.halil.ozel.covid19stats.business.repository.Repository
+import com.halil.ozel.covid19stats.common.utils.NetworkHelper
+import com.halil.ozel.covid19stats.common.utils.Source
+import com.halil.ozel.covid19stats.presentation.viewmodel.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

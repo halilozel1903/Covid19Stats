@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.repository
+package com.halil.ozel.covid19stats.business.repository
 
 import com.halil.ozel.covid19stats.api.ApiHelper
 import javax.inject.Inject

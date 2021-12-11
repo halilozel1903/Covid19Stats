@@ -1,6 +1,6 @@
 package com.halil.ozel.covid19stats.api
 
-import com.halil.ozel.covid19stats.data.CountriesResponse
+import com.halil.ozel.covid19stats.common.models.CountriesResponse
 import retrofit2.Response
 import javax.inject.Inject
 

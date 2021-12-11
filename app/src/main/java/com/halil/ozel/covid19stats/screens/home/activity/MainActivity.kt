@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.ui.activity
+package com.halil.ozel.covid19stats.screens.home.activity
 
 import android.app.SearchManager
 import android.content.Intent
@@ -9,13 +9,14 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.halil.ozel.covid19stats.viewmodel.CountryDetailViewModel
-import com.halil.ozel.covid19stats.viewmodel.HomeViewModel
+import com.halil.ozel.covid19stats.screens.detail.viewmodel.DetailViewModel
+import com.halil.ozel.covid19stats.screens.home.viewmodel.HomeViewModel
 import com.halil.ozel.covid19stats.R
-import com.halil.ozel.covid19stats.data.CountriesResponse
+import com.halil.ozel.covid19stats.common.models.CountriesResponse
 import com.halil.ozel.covid19stats.databinding.ActivityMainBinding
-import com.halil.ozel.covid19stats.ui.adapter.CountryAdapter
-import com.halil.ozel.covid19stats.utils.Status
+import com.halil.ozel.covid19stats.screens.detail.activity.DetailActivity
+import com.halil.ozel.covid19stats.screens.home.adapter.CountryAdapter
+import com.halil.ozel.covid19stats.common.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
@@ -23,7 +24,7 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     private val homeViewModel: HomeViewModel by viewModels()
-    private val usersDetailViewModel: CountryDetailViewModel by viewModels()
+    private val usersDetailViewModel: DetailViewModel by viewModels()
     private var searchView: SearchView? = null
     private var countryAdapter: CountryAdapter? = null
     private var countriesResponseList: List<CountriesResponse>? = null

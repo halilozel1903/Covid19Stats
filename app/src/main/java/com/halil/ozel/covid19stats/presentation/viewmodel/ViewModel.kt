@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.viewmodel
+package com.halil.ozel.covid19stats.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 

@@ -1,4 +1,4 @@
-package com.halil.ozel.covid19stats.ui.adapter
+package com.halil.ozel.covid19stats.screens.home.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -8,9 +8,9 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.halil.ozel.covid19stats.data.CountriesResponse
+import com.halil.ozel.covid19stats.common.models.CountriesResponse
 import com.halil.ozel.covid19stats.databinding.CountryRowBinding
-import com.halil.ozel.covid19stats.ui.adapter.CountryAdapter.CountryHolder
+import com.halil.ozel.covid19stats.screens.home.adapter.CountryAdapter.CountryHolder
 import com.squareup.picasso.Picasso
 import java.util.*
 

@@ -1,26 +1,29 @@
 package com.halil.ozel.covid19stats.ui.activity
 
 import android.app.SearchManager
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.halil.ozel.covid19stats.viewmodel.CountryDetailViewModel
+import com.halil.ozel.covid19stats.viewmodel.HomeViewModel
 import com.halil.ozel.covid19stats.R
-import com.halil.ozel.covid19stats.api.CoronaApi.retrofitInstance
-import com.halil.ozel.covid19stats.api.CoronaService
 import com.halil.ozel.covid19stats.data.CountriesResponse
 import com.halil.ozel.covid19stats.databinding.ActivityMainBinding
 import com.halil.ozel.covid19stats.ui.adapter.CountryAdapter
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.halil.ozel.covid19stats.utils.Status
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.*
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
+    private val homeViewModel: HomeViewModel by viewModels()
+    private val usersDetailViewModel: CountryDetailViewModel by viewModels()
     private var searchView: SearchView? = null
     private var countryAdapter: CountryAdapter? = null
     private var countriesResponseList: List<CountriesResponse>? = null
@@ -35,25 +38,33 @@ class MainActivity : AppCompatActivity() {
         countryAdapter = CountryAdapter()
         binding.rvCountry.adapter = countryAdapter
         countriesResponseList = ArrayList()
-        val coronaService = retrofitInstance!!.create(CoronaService::class.java)
-        val call = coronaService.getCountryList()
 
-        call.enqueue(object : Callback<List<CountriesResponse>> {
-            override fun onResponse(
-                call: Call<List<CountriesResponse>>,
-                response: Response<List<CountriesResponse>>
-            ) {
-                countriesResponseList = response.body()
-                if (countriesResponseList != null) {
-                    for (countriesResponse in countriesResponseList!!) {
-                        println("""Country Name : ${countriesResponse.country} - Death Count : ${countriesResponse.deaths}""")
-                        countryAdapter!!.setCountryList(applicationContext, countriesResponseList!!)
+        homeViewModel.countryData.observe(this, {
+            when (it.status) {
+                Status.SUCCESS -> {
+                    it.data?.let { countries ->
+                        countryAdapter!!.setCountryList(applicationContext, countries)
+
                     }
                 }
             }
+        })
 
-            override fun onFailure(call: Call<List<CountriesResponse>>, t: Throwable) {
-                Log.d("Error", t.message!!)
+        countryAdapter!!.setOnItemClickListener(object : CountryAdapter.OnItemClickListener {
+            override fun onItemClick(item: CountriesResponse) {
+                println("Country: ${item.country}")
+                usersDetailViewModel._countryLiveData.postValue(item.country)
+
+                val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                intent.putExtra("country", item.country)
+                intent.putExtra("todayCase", item.todayCases)
+                intent.putExtra("todayDeath", item.todayDeaths)
+                intent.putExtra("flag", item.countryInfo!!.flag)
+                intent.putExtra("cases", item.cases)
+                intent.putExtra("deaths", item.deaths)
+                intent.putExtra("tests", item.tests)
+                intent.putExtra("recovered", item.recovered)
+                startActivity(intent)
             }
         })
     }

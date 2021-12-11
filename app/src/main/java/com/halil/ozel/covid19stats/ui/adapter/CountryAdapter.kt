@@ -2,27 +2,20 @@ package com.halil.ozel.covid19stats.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.halil.ozel.covid19stats.api.CoronaApi.retrofitInstance
-import com.halil.ozel.covid19stats.api.CoronaService
 import com.halil.ozel.covid19stats.data.CountriesResponse
 import com.halil.ozel.covid19stats.databinding.CountryRowBinding
-import com.halil.ozel.covid19stats.ui.activity.DetailActivity
 import com.halil.ozel.covid19stats.ui.adapter.CountryAdapter.CountryHolder
 import com.squareup.picasso.Picasso
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.util.*
 
 class CountryAdapter : RecyclerView.Adapter<CountryHolder>(), Filterable {
+    private var onItemClickListener: OnItemClickListener? = null
     private var countriesList: List<CountriesResponse>? = null
     private var countriesListed: List<CountriesResponse>? = null
     private var context: Context? = null
@@ -69,37 +62,15 @@ class CountryAdapter : RecyclerView.Adapter<CountryHolder>(), Filterable {
         return CountryHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CountryHolder, position: Int) {
         holder.binding.tvCountryDeath.text = "Total Death : " + countriesListed!![position].deaths
         holder.binding.tvCountryName.text = countriesListed!![position].country
         Picasso.with(context).load(countriesListed!![position].countryInfo!!.flag)
             .into(holder.binding.ivCountryPoster)
-        holder.itemView.setOnClickListener { view ->
-            val coronaService = retrofitInstance!!.create(CoronaService::class.java)
-            val call = coronaService.getCountryInfo(countriesListed!![position].country)
-            call!!.enqueue(object : Callback<CountriesResponse?> {
-                override fun onResponse(
-                    call: Call<CountriesResponse?>,
-                    response: Response<CountriesResponse?>
-                ) {
-                    val intent = Intent(view.context, DetailActivity::class.java)
-                    if (response.body() != null) {
-                        intent.putExtra("country", response.body()!!.country)
-                        intent.putExtra("todayCase", response.body()!!.todayCases)
-                        intent.putExtra("todayDeath", response.body()!!.todayDeaths)
-                        intent.putExtra("flag", response.body()!!.countryInfo!!.flag)
-                        intent.putExtra("cases", response.body()!!.cases)
-                        intent.putExtra("deaths", response.body()!!.deaths)
-                        intent.putExtra("tests", response.body()!!.tests)
-                        intent.putExtra("recovered", response.body()!!.recovered)
-                    }
-                    view.context.startActivity(intent)
-                }
-
-                override fun onFailure(call: Call<CountriesResponse?>, t: Throwable) {
-                    t.message?.let { Log.d("Error", it) }
-                }
-            })
+        holder.itemView.setOnClickListener {
+            if (onItemClickListener == null) return@setOnClickListener
+            onItemClickListener?.onItemClick(countriesListed!![position])
         }
     }
 
@@ -121,7 +92,7 @@ class CountryAdapter : RecyclerView.Adapter<CountryHolder>(), Filterable {
                     val filteredList: MutableList<CountriesResponse> = ArrayList()
                     for (movie in countriesList!!) {
                         if (movie.country!!.lowercase(Locale.getDefault())
-                                .contains(charString.toLowerCase())
+                                .contains(charString.lowercase(Locale.getDefault()))
                         ) {
                             filteredList.add(movie)
                         }
@@ -144,4 +115,12 @@ class CountryAdapter : RecyclerView.Adapter<CountryHolder>(), Filterable {
 
     inner class CountryHolder(val binding: CountryRowBinding) :
         RecyclerView.ViewHolder(binding.root)
+
+    fun setOnItemClickListener(onItemClickListener: OnItemClickListener) {
+        this.onItemClickListener = onItemClickListener
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(item: CountriesResponse)
+    }
 }

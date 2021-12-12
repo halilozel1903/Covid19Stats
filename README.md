@@ -55,15 +55,6 @@ Clicking on the countries from the main page or search screen goes to the detail
 
 <br>
 
-## Coming Soon 🔜
-Stay At Home 🏠
-
-Don't Panic ❌
-
-Everything will be good ✅
-
-<br>
-
 ## License
 ```
 MIT License

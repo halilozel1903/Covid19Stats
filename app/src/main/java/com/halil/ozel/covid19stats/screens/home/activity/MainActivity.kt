@@ -13,6 +13,14 @@ import com.halil.ozel.covid19stats.screens.detail.viewmodel.DetailViewModel
 import com.halil.ozel.covid19stats.screens.home.viewmodel.HomeViewModel
 import com.halil.ozel.covid19stats.R
 import com.halil.ozel.covid19stats.common.models.CountriesResponse
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.CASES
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.COUNTRY
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.DEATHS
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.FLAG
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.RECOVERED
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TESTS
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TODAY_CASE
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TODAY_DEATH
 import com.halil.ozel.covid19stats.databinding.ActivityMainBinding
 import com.halil.ozel.covid19stats.screens.detail.activity.DetailActivity
 import com.halil.ozel.covid19stats.screens.home.adapter.CountryAdapter
@@ -53,18 +61,17 @@ class MainActivity : AppCompatActivity() {
 
         countryAdapter!!.setOnItemClickListener(object : CountryAdapter.OnItemClickListener {
             override fun onItemClick(item: CountriesResponse) {
-                println("Country: ${item.country}")
                 usersDetailViewModel._countryLiveData.postValue(item.country)
 
                 val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra("country", item.country)
-                intent.putExtra("todayCase", item.todayCases)
-                intent.putExtra("todayDeath", item.todayDeaths)
-                intent.putExtra("flag", item.countryInfo!!.flag)
-                intent.putExtra("cases", item.cases)
-                intent.putExtra("deaths", item.deaths)
-                intent.putExtra("tests", item.tests)
-                intent.putExtra("recovered", item.recovered)
+                intent.putExtra(COUNTRY, item.country)
+                intent.putExtra(TODAY_CASE, item.todayCases)
+                intent.putExtra(TODAY_DEATH, item.todayDeaths)
+                intent.putExtra(FLAG, item.countryInfo!!.flag)
+                intent.putExtra(CASES, item.cases)
+                intent.putExtra(DEATHS, item.deaths)
+                intent.putExtra(TESTS, item.tests)
+                intent.putExtra(RECOVERED, item.recovered)
                 startActivity(intent)
             }
         })

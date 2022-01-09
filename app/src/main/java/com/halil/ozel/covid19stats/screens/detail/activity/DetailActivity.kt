@@ -4,6 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.halil.ozel.covid19stats.databinding.ActivityDetailBinding
 import com.squareup.picasso.Picasso
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.CASES
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.COUNTRY
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.DEATHS
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.FLAG
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.RECOVERED
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TESTS
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TODAY_CASE
+import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TODAY_DEATH
 
 class DetailActivity : AppCompatActivity() {
 
@@ -14,17 +22,17 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setIntentInfo()
+        setCountryInfo()
     }
 
-    private fun setIntentInfo() {
-        val countryName = intent.getStringExtra("country")
-        val todayCase = intent.getStringExtra("todayCase")
-        val todayDeath = intent.getStringExtra("todayDeath")
-        val totalCases = intent.getStringExtra("cases")
-        val totalDeaths = intent.getStringExtra("deaths")
-        val totalTests = intent.getStringExtra("tests")
-        val totalRecovered = intent.getStringExtra("recovered")
+    private fun setCountryInfo() {
+        val countryName = intent.getStringExtra(COUNTRY)
+        val todayCase = intent.getStringExtra(TODAY_CASE)
+        val todayDeath = intent.getStringExtra(TODAY_DEATH)
+        val totalCases = intent.getStringExtra(CASES)
+        val totalDeaths = intent.getStringExtra(DEATHS)
+        val totalTests = intent.getStringExtra(TESTS)
+        val totalRecovered = intent.getStringExtra(RECOVERED)
 
         binding.tvCountryName.text = countryName
         binding.tvTodayCases.text = todayCase
@@ -33,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
         binding.tvTotalCases.text = totalCases
         binding.tvTotalDeaths.text = totalDeaths
         binding.tvTotalRecovered.text = totalRecovered
-        Picasso.with(applicationContext).load(intent.getStringExtra("flag"))
+        Picasso.with(applicationContext).load(intent.getStringExtra(FLAG))
             .into(binding.ivCountryPoster)
     }
 }

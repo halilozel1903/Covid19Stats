@@ -41,7 +41,7 @@ class DetailActivity : AppCompatActivity() {
         binding.tvTotalCases.text = totalCases
         binding.tvTotalDeaths.text = totalDeaths
         binding.tvTotalRecovered.text = totalRecovered
-        Picasso.with(applicationContext).load(intent.getStringExtra(FLAG))
+        Picasso.get().load(intent.getStringExtra(FLAG))
             .into(binding.ivCountryPoster)
     }
 }

@@ -66,7 +66,7 @@ class CountryAdapter : RecyclerView.Adapter<CountryHolder>(), Filterable {
     override fun onBindViewHolder(holder: CountryHolder, position: Int) {
         holder.binding.tvCountryDeath.text = "Total Death : " + countriesListed!![position].deaths
         holder.binding.tvCountryName.text = countriesListed!![position].country
-        Picasso.with(context).load(countriesListed!![position].countryInfo!!.flag)
+        Picasso.get().load(countriesListed!![position].countryInfo!!.flag)
             .into(holder.binding.ivCountryPoster)
         holder.itemView.setOnClickListener {
             if (onItemClickListener == null) return@setOnClickListener

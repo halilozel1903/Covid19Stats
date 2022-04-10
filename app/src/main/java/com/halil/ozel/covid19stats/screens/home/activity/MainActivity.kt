@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
         binding.rvCountry.adapter = countryAdapter
         countriesResponseList = ArrayList()
 
-        homeViewModel.countryData.observe(this, {
+        homeViewModel.countryData.observe(this) {
             when (it.status) {
                 Status.SUCCESS -> {
                     it.data?.let { countries ->
@@ -56,8 +56,9 @@ class MainActivity : AppCompatActivity() {
 
                     }
                 }
+                else -> {}
             }
-        })
+        }
 
         countryAdapter!!.setOnItemClickListener(object : CountryAdapter.OnItemClickListener {
             override fun onItemClick(item: CountriesResponse) {

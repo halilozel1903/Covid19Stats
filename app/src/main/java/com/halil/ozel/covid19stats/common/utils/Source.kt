@@ -6,7 +6,6 @@ data class Source<out T>(
     val message: String?
 ) {
     companion object {
-
         fun <T> success(data: T?): Source<T> {
             return Source(
                 Status.SUCCESS,
@@ -26,8 +25,5 @@ data class Source<out T>(
         fun <T> error(msg: String, data: T?): Source<T> {
             return Source(Status.ERROR, data, msg)
         }
-
-
     }
-
 }

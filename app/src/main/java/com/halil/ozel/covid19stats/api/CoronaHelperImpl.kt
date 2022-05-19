@@ -8,7 +8,6 @@ import javax.inject.Inject
  * Created by halilozel1903 on 11.12.2021
  */
 class CoronaHelperImpl @Inject constructor(private val service: CoronaService) : ApiHelper {
-
     override suspend fun getCountryList(): Response<List<CountriesResponse>> =
         service.getCountryList()
 

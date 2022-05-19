@@ -25,7 +25,6 @@ class HomeViewModel @Inject constructor(
     val countryData: LiveData<Source<List<CountriesResponse>>> get() = _countryData
 
     init {
-
         getData()
     }
 

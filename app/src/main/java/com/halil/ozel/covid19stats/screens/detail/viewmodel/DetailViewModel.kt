@@ -45,7 +45,6 @@ class DetailViewModel @Inject constructor(
                     repository.getCountryInfo(id).let {
 
                         if (it.isSuccessful) {
-
                             countryData.postValue(
                                 Source.success(
                                     it.body()

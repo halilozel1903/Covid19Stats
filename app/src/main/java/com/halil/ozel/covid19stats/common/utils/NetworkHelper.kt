@@ -17,7 +17,6 @@ class NetworkHelper @Inject constructor(@ApplicationContext private val context:
 
         var networkResult = false
 
-
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE)
                 as ConnectivityManager
 
@@ -28,23 +27,19 @@ class NetworkHelper @Inject constructor(@ApplicationContext private val context:
             val activeNetwork = connectivityManager.getNetworkCapabilities(networkCapabilities)
                 ?: return false
             networkResult = when {
-
                 activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
                 activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
                 activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
                 activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_VPN) -> true
 
-
                 else -> false
             }
 
         } else {
-
             @Suppress("DEPRECATED")
             connectivityManager.run {
 
                 connectivityManager.activeNetworkInfo?.run {
-
                     networkResult = when (type) {
                         ConnectivityManager.TYPE_ETHERNET -> true
                         ConnectivityManager.TYPE_MOBILE -> true
@@ -52,13 +47,9 @@ class NetworkHelper @Inject constructor(@ApplicationContext private val context:
                         ConnectivityManager.TYPE_VPN -> true
                         else -> false
                     }
-
                 }
-
             }
-
         }
-
         return networkResult
     }
 }

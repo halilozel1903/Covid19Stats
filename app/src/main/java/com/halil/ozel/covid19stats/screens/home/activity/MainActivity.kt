@@ -52,15 +52,14 @@ class MainActivity : AppCompatActivity() {
             when (it.status) {
                 Status.SUCCESS -> {
                     it.data?.let { countries ->
-                        countryAdapter!!.setCountryList(applicationContext, countries)
-
+                        countryAdapter?.setCountryList(applicationContext, countries)
                     }
                 }
                 else -> {}
             }
         }
 
-        countryAdapter!!.setOnItemClickListener(object : CountryAdapter.OnItemClickListener {
+        countryAdapter?.setOnItemClickListener(object : CountryAdapter.OnItemClickListener {
             override fun onItemClick(item: CountriesResponse) {
                 usersDetailViewModel._countryLiveData.postValue(item.country)
 
@@ -83,19 +82,19 @@ class MainActivity : AppCompatActivity() {
         val searchManager = getSystemService(SEARCH_SERVICE) as SearchManager
         searchView = menu.findItem(R.id.action_search)
             .actionView as SearchView
-        searchView!!.setSearchableInfo(
+        searchView?.setSearchableInfo(
             searchManager
                 .getSearchableInfo(componentName)
         )
-        searchView!!.maxWidth = Int.MAX_VALUE
-        searchView!!.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        searchView?.maxWidth = Int.MAX_VALUE
+        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                countryAdapter!!.filter.filter(query)
+                countryAdapter?.filter?.filter(query)
                 return false
             }
 
             override fun onQueryTextChange(query: String): Boolean {
-                countryAdapter!!.filter.filter(query)
+                countryAdapter?.filter?.filter(query)
                 return false
             }
         })
@@ -111,7 +110,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if (!searchView!!.isIconified) {
-            searchView!!.isIconified = true
+            searchView?.isIconified = true
             return
         }
         super.onBackPressed()

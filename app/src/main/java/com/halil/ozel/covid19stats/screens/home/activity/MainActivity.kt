@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.halil.ozel.covid19stats.screens.detail.viewmodel.DetailViewModel
 import com.halil.ozel.covid19stats.screens.home.viewmodel.HomeViewModel
@@ -43,6 +44,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        binding.rvCountry.addItemDecoration(
+            DividerItemDecoration(
+                this,
+                LinearLayoutManager.VERTICAL
+            )
+        )
         binding.rvCountry.layoutManager = LinearLayoutManager(this)
         countryAdapter = CountryAdapter()
         binding.rvCountry.adapter = countryAdapter

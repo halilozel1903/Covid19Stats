@@ -18,8 +18,8 @@
             android:layout_width="72dp"
             android:layout_height="72dp"
             android:layout_gravity="center"
-            android:shape="ring"
             android:elevation="8dp"
+            android:shape="ring"
             app:cardCornerRadius="36dp">
 
             <ImageView
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
-                tools:src="@drawable/cases"/>
+                tools:src="@drawable/cases" />
 
         </androidx.cardview.widget.CardView>
 
@@ -42,19 +42,19 @@
                 android:id="@+id/tvCountryName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@android:color/black"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginTop="8dp"
+                android:fontFamily="sans-serif-medium"
                 android:gravity="center_vertical"
-                tools:text="Turkey"
-                android:textSize="16sp" />
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                tools:text="Turkey" />
 
             <TextView
                 android:id="@+id/tvCountryDeath"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-medium"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-medium"
                 android:textSize="16sp"
                 tools:text="58" />
 

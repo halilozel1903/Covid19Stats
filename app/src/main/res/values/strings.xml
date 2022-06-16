@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Covid19 Stats</string>
+    <string name="today_death">Today Death :</string>
+    <string name="total_test">Total Test :</string>
+    <string name="total_cases">Total Cases :</string>
+    <string name="total_deaths">Total Deaths :</string>
+    <string name="total_recovered">Total Recovered :</string>
 </resources>

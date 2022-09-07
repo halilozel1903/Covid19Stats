@@ -21,8 +21,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
 
-    private val API_URL = "https://corona.lmao.ninja/v2/"
-
     @Provides
     fun provideApiUrl() = API_URL
 
@@ -61,4 +59,8 @@ class ApplicationModule {
     @Singleton
     @Provides
     fun provideApiHelper(apiHelperImpl: CoronaHelperImpl): ApiHelper = apiHelperImpl
+
+    companion object {
+        private const val API_URL = "https://disease.sh/v3/covid-19/"
+    }
 }

@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.halil.ozel.covid19stats.databinding.ActivityDetailBinding
 import com.squareup.picasso.Picasso
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.CASES
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.COUNTRY
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.DEATHS
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.FLAG
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.RECOVERED
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TESTS
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TODAY_CASE
-import com.halil.ozel.covid19stats.common.utils.Consts.Companion.TODAY_DEATH
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.CASES
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.COUNTRY
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.DEATHS
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.FLAG
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.RECOVERED
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.TESTS
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.TODAY_CASE
+import com.halil.ozel.covid19stats.common.utils.Const.Companion.TODAY_DEATH
 
 class DetailActivity : AppCompatActivity() {
 

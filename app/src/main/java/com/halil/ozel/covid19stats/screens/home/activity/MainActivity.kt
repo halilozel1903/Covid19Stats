@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity() {
         } else super.onOptionsItemSelected(item)
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
         if (!searchView!!.isIconified) {
             searchView?.isIconified = true

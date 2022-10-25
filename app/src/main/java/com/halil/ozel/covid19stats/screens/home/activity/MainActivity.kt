@@ -70,16 +70,17 @@ class MainActivity : AppCompatActivity() {
             override fun onItemClick(item: CountriesResponse) {
                 usersDetailViewModel._countryLiveData.postValue(item.country)
 
-                val intent = Intent(this@MainActivity, DetailActivity::class.java)
-                intent.putExtra(COUNTRY, item.country)
-                intent.putExtra(TODAY_CASE, item.todayCases)
-                intent.putExtra(TODAY_DEATH, item.todayDeaths)
-                intent.putExtra(FLAG, item.countryInfo!!.flag)
-                intent.putExtra(CASES, item.cases)
-                intent.putExtra(DEATHS, item.deaths)
-                intent.putExtra(TESTS, item.tests)
-                intent.putExtra(RECOVERED, item.recovered)
-                startActivity(intent)
+                Intent(this@MainActivity, DetailActivity::class.java).apply {
+                    putExtra(COUNTRY, item.country)
+                    putExtra(TODAY_CASE, item.todayCases)
+                    putExtra(TODAY_DEATH, item.todayDeaths)
+                    putExtra(FLAG, item.countryInfo!!.flag)
+                    putExtra(CASES, item.cases)
+                    putExtra(DEATHS, item.deaths)
+                    putExtra(TESTS, item.tests)
+                    putExtra(RECOVERED, item.recovered)
+                    startActivity(this)
+                }
             }
         })
     }

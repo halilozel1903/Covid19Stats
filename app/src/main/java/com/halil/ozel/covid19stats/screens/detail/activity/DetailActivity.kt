@@ -19,10 +19,14 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setView()
+        setCountryInfo()
+    }
+
+    private fun setView() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        setCountryInfo()
     }
 
     private fun setCountryInfo() {

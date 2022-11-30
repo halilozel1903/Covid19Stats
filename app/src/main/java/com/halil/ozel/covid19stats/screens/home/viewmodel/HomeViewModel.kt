@@ -41,8 +41,12 @@ class HomeViewModel @Inject constructor(
                     }
                 }
             } else {
-                _countryData.postValue(Source.error("Internet connection not found", null))
+                _countryData.postValue(Source.error(MESSAGE_ERROR, null))
             }
         }
+    }
+
+    companion object {
+        private const val MESSAGE_ERROR = "Internet connection not found"
     }
 }

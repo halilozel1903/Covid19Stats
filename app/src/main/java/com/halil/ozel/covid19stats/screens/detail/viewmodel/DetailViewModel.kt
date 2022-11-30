@@ -24,9 +24,9 @@ class DetailViewModel @Inject constructor(
     private val countryData = MutableLiveData<Source<CountriesResponse>>()
 
     val _countryLiveData = MutableLiveData<String>()
-    val countryLiveData: LiveData<String> get() = _countryLiveData
+    private val countryLiveData: LiveData<String> get() = _countryLiveData
 
-    val id = countryLiveData.value
+    private val id = countryLiveData.value
 
 
     override fun getData() {

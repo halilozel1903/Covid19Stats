@@ -5,4 +5,5 @@
     <string name="total_cases">Total Cases :</string>
     <string name="total_deaths">Total Deaths :</string>
     <string name="total_recovered">Total Recovered :</string>
+    <string name="poster">poster</string>
 </resources>

@@ -23,13 +23,13 @@
             android:id="@+id/rvCountry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp" />
+            android:padding="@dimen/padding_size" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:padding="@dimen/padding_size"
             android:visibility="gone" />
     </LinearLayout>
 

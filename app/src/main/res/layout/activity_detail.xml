@@ -6,11 +6,9 @@
     android:orientation="vertical"
     tools:context=".screens.detail.activity.DetailActivity">
 
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,7 +22,9 @@
             android:id="@+id/ivCountryPoster"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:contentDescription="@string/imageview"
+            />
 
         <TextView
             android:id="@+id/tvCountryName"
@@ -45,7 +45,9 @@
                 android:id="@+id/ivTodayCases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/cases" />
+                android:background="@drawable/cases"
+                android:contentDescription="@string/imageview"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,7 +55,7 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="@dimen/margin_small_size"
                 android:layout_marginEnd="@dimen/margin_small_size"
-                android:text="Today Cases : "
+                android:text="@string/today_cases"
                 android:textSize="@dimen/text_size" />
 
             <TextView
@@ -78,7 +80,9 @@
                 android:id="@+id/ivTodayDeath"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/death" />
+                android:background="@drawable/death"
+                android:contentDescription="@string/imageview"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,7 +115,9 @@
                 android:id="@+id/ivTotalTest"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/test" />
+                android:background="@drawable/test"
+                android:contentDescription="@string/imageview"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -145,7 +151,9 @@
                 android:id="@+id/ivTotalCases"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/totalcases" />
+                android:background="@drawable/totalcases"
+                android:contentDescription="@string/imageview"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -179,7 +187,9 @@
                 android:id="@+id/ivTotalDeaths"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/totaldeath" />
+                android:background="@drawable/totaldeath"
+                android:contentDescription="@string/imageview"
+                />
 
             <TextView
                 android:layout_width="wrap_content"

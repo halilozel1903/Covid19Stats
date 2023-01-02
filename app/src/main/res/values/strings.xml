@@ -7,4 +7,5 @@
     <string name="total_recovered">Total Recovered :</string>
     <string name="poster">poster</string>
     <string name="imageview">imageView</string>
+    <string name="today_cases">Today Cases :</string>
 </resources>

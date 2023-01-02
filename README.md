@@ -53,13 +53,15 @@ Clicking on the countries from the main page or search screen goes to the detail
 
 <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailTurkey.jpeg" width="250" /> <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailSpain.jpeg" width="250" />  <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailUsa.jpeg" width="250" />
 
-<br>
+If this project help 💁 you to develop, you can give me a cup of coffee. ☕
+
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/halilozel1903)
 
 ## License ℹ️
 ```
 MIT License
 
-Copyright (c) 2022 Halil OZEL
+Copyright (c) 2023 Halil OZEL
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

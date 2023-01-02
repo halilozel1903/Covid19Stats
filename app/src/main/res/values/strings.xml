@@ -5,7 +5,7 @@
     <string name="total_cases">Total Cases :</string>
     <string name="total_deaths">Total Deaths :</string>
     <string name="total_recovered">Total Recovered :</string>
+    <string name="today_cases">Today Cases :</string>
     <string name="poster">poster</string>
     <string name="imageview">imageView</string>
-    <string name="today_cases">Today Cases :</string>
 </resources>

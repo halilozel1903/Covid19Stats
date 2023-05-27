@@ -70,8 +70,8 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:$dagger_version"
 
     // Core
-    implementation 'androidx.core:core-ktx:1.9.0'
-    implementation "androidx.fragment:fragment-ktx:1.5.6"
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation "androidx.fragment:fragment-ktx:1.5.7"
 }
 repositories {
     mavenCentral()

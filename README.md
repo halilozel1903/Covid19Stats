@@ -53,7 +53,7 @@ Clicking on the countries from the main page or search screen goes to the detail
 
 <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailTurkey.jpeg" width="250" /> <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailSpain.jpeg" width="250" />  <img src="https://github.com/halilozel1903/Covid19Stats/blob/master/screenshots/detailUsa.jpeg" width="250" />
 
-## Donation 💸
+## Donation 💸 💰
 
 If this project help 💁 you to develop, you can give me a cup of coffee. ☕
 

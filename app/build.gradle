@@ -5,8 +5,8 @@ apply plugin: 'kotlin-kapt'
 
 
 android {
-    compileSdkVersion 33
     defaultConfig {
+        compileSdk 33
         applicationId "com.halil.ozel.covid19stats"
         minSdkVersion 22
         targetSdkVersion 33
@@ -46,8 +46,8 @@ dependencies {
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
 
     // Lifecycle
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.2"
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.6.2'
 
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
